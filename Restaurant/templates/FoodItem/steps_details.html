@@ -1,0 +1,49 @@
+{% extends "FoodItem/base.html" %}
+
+{% block head %}
+
+  <style media="screen">
+    span{
+      color:red;
+    }
+  </style>
+
+{% endblock %}
+{% block employee_step %}<a class="nav-link" href="/FoodItem/employees"><button type="button" class="btn btn-outline-danger">EMPLOYEES OR STEPS</button></a>{% endblock %}
+
+
+
+{% block body %}
+
+  <div class="jumbotron mx-5">
+
+    <div class="alert alert-success" role="alert">
+      <b><center> PROCESS STEP <span>{{step|upper}}</span> </center></b>
+    </div>
+    {% if step_details %}
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col"></th>
+          <th scope="col">Item</th>
+          <th scope="col">Assigned</th>
+          <th scope="col">Schedule</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for step in step_details %}
+        <tr>
+          <th scope="row"></th>
+          <td>{{step.item_name.item_name}}</td>
+          <td>{{step.assigned}}</td>
+          <td>{{step.schedule}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% endif %}
+
+
+  </div>
+
+{% endblock %}

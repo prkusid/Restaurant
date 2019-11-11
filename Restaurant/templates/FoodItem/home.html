@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% extends 'FoodItem/base.html' %}
+
+{% block title %} welcome {% endblock %}
+
+{% block head %}
+
+<style>
+  .card {
+    float:left;
+  }
+
+  img{
+    height:1280;
+    width:720;
+  }
+
+</style>
+
+{% endblock %}
+
+{% block employee_step %}<a class="nav-link" href="/FoodItem/employees"><button type="button" class="btn btn-outline-danger">EMPLOYEES OR STEPS</button></a>{% endblock %}
+
+
+{% block body %}
+
+<div class=" mx-5 jumbotron">
+
+  <div class="alert alert-success" role="alert">
+    <b><center> FOOD ITEMS </center></b>
+  </div>
+
+  {% if food_items %}
+    <!-- <div class="container"> -->
+      {% for item in food_items %}
+        <a href="details/{{item.id}}/{{item.item_name}}">
+          <div class="card mx-4 my-3" style="width: 18rem;">
+            {% if item.item_name == "Kharabath" %}
+              <img src="https://i.ytimg.com/vi/qYFbz9Hddj4/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Kesaribath" %}
+            <img src="https://i.ytimg.com/vi/M7lYbQTmx_Y/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Round Idli" %}
+            <img src="https://i.ytimg.com/vi/jT5KuygIv_M/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Tatte Idli" %}
+            <img src="https://i.ytimg.com/vi/qF8_j_6DeQg/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Rice Bath" %}
+            <img src="https://i.ytimg.com/vi/Gpf7FslXeOw/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Bisibelebath" %}
+            <img src="https://i.ytimg.com/vi/T9ElSJRQmQY/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Puliyogare" %}
+            <img src="https://i.ytimg.com/vi/-yfOAotb3Lk/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Avalakki" %}
+            <img src="https://www.itslife.in/wp-content/uploads/2007/10/Kurtakoti-Avalakki-1280x720.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Mandakki" %}
+            <img src="https://i.ytimg.com/vi/oo4vrHEsc1Q/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Uddina Vada" %}
+            <img src="https://i.ytimg.com/vi/xVm2gsvylAg/maxresdefault.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Masala Vada" %}
+            <img src=https://i.ytimg.com/vi/kSLE6ncCK2Q/maxresdefault.jpg class="card-img-top" alt="...">
+            {% elif item.item_name == "Dosa D" %}
+            <img src="https://www.yovizag.com/wp-content/uploads/2019/09/Dosa_web-758x474.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Paddu" %}
+            <img src="http://shubhasharon.com/wp-content/uploads/2018/06/masala-paddu1-1280x720.jpg" class="card-img-top" alt="...">
+            {% elif item.item_name == "Generic" %}
+            <img src="https://www.oyorooms.com/blog/wp-content/uploads/2018/07/shutterstock_754732342-1280x720.jpg" class="card-img-top" alt="...">
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title"><center>{{item.item_name|upper}}</center></h5>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+
+    <!-- </div> -->
+  {% else %}
+    <h1>No Food Items Available ...</h1>
+  {% endif %}
+
+
+</div>
+
+
+
+{% endblock %}

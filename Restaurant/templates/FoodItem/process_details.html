@@ -1,0 +1,95 @@
+{% extends "FoodItem/base.html" %}
+
+{% block head %}
+  <style>
+    .left{
+      width:30%;
+      float:left;
+
+    }
+
+    .right{
+      width:63%;
+      float:right;
+    }
+    span{
+      color:red;
+    }
+
+  </style>
+{% endblock %}
+{% block employee_step %}<a class="nav-link" href="/FoodItem/employees"><button type="button" class="btn btn-outline-danger">EMPLOYEES OR STEPS</button></a>{% endblock %}
+
+
+{% block body %}
+    <div class="jumbotron my-3 mx-4">
+      <div class="alert alert-success" role="alert">
+        <b><center> PROCESS STEPS FOR MAKING OF <span>{{item_name|upper}}</span> </center></b>
+      </div>
+      <div class="left">
+        <div class="card mx-4 my-3" style="width: 30rem;">
+          {% if item_name == "Kharabath" %}
+            <img src="https://i.ytimg.com/vi/qYFbz9Hddj4/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Kesaribath" %}
+          <img src="https://i.ytimg.com/vi/M7lYbQTmx_Y/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Round Idli" %}
+          <img src="https://i.ytimg.com/vi/jT5KuygIv_M/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Tatte Idli" %}
+          <img src="https://i.ytimg.com/vi/qF8_j_6DeQg/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Rice Bath" %}
+          <img src="https://i.ytimg.com/vi/Gpf7FslXeOw/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Bisibelebath" %}
+          <img src="https://i.ytimg.com/vi/T9ElSJRQmQY/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Puliyogare" %}
+          <img src="https://i.ytimg.com/vi/-yfOAotb3Lk/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Avalakki" %}
+          <img src="https://www.itslife.in/wp-content/uploads/2007/10/Kurtakoti-Avalakki-1280x720.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Mandakki" %}
+          <img src="https://i.ytimg.com/vi/oo4vrHEsc1Q/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Uddina Vada" %}
+          <img src="https://i.ytimg.com/vi/xVm2gsvylAg/maxresdefault.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Masala Vada" %}
+          <img src=https://i.ytimg.com/vi/kSLE6ncCK2Q/maxresdefault.jpg class="card-img-top" alt="...">
+          {% elif item_name == "Dosa D" %}
+          <img src="https://www.yovizag.com/wp-content/uploads/2019/09/Dosa_web-758x474.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Paddu" %}
+          <img src="http://shubhasharon.com/wp-content/uploads/2018/06/masala-paddu1-1280x720.jpg" class="card-img-top" alt="...">
+          {% elif item_name == "Generic" %}
+          <img src="https://www.oyorooms.com/blog/wp-content/uploads/2018/07/shutterstock_754732342-1280x720.jpg" class="card-img-top" alt="...">
+          {% endif %}
+
+          <div class="card-body">
+            <h5 class="card-title"><center>{{item_name|upper}}</center></h5>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="right">
+        {% if process_step %}
+        <table class="table table-hover">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Process Step</th>
+              <th scope="col">Schedule</th>
+              <th scope="col">Assigned</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for step in process_step %}
+            <tr>
+              <th scope="row">{{step.sequence_number}}</th>
+              <td>{{step.process_step}}</td>
+              <td>{{step.schedule}}</td>
+              <td>{{step.assigned}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+
+      </div>
+
+    </div>
+{% endblock %}

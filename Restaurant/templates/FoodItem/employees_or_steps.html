@@ -1,0 +1,91 @@
+{% extends "FoodItem/base.html" %}
+
+{% block head %}
+
+  <style media="screen">
+    .left{
+      width:30%;
+      float:left;
+    }
+
+    .right{
+      width:30%;
+      float:right;
+    }
+  </style>
+
+
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-lg-0" method="post">
+    {% csrf_token %}
+    <input class="form-control mr-sm-2" type="search" placeholder="Employee,Steps" aria-label="Search" name="search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+
+{% endblock %}
+{% if search %}
+   {% block employee_step %}<a class="nav-link" href="/FoodItem/employees"><button type="button" class="btn btn-outline-danger">EMPLOYEES OR STEPS</button></a>{% endblock %}
+{% endif %}
+
+{% block body %}
+
+  <div class="container jumbotron">
+
+    {% if search %}
+    <div class="right">
+      <div class="alert alert-success" role="alert">
+        <b><center> EMPLOYEES LIST </center></b>
+      </div>
+      {% if list_employees %}
+      {% for employee in list_employees %}
+
+          <a href="/FoodItem/employee_details/{{employee}}"><button type="submit" class="btn btn-primary btn-lg btn-block">{{employee|upper}}</button></a><hr>
+      {% endfor %}
+      {% else %}
+        <p>No Details Are Available..</p>
+      {% endif %}
+
+    </div>
+
+    <div class="left">
+      <div class="alert alert-success" role="alert">
+        <b><center> STEPS LIST </center></b>
+      </div>
+      {% if list_steps %}
+      {% for step in list_steps %}
+          <a href="/FoodItem/step_details/{{step}}"><button type="submit" class="btn btn-primary btn-lg btn-block">{{step|title}}</button></a><hr>
+      {% endfor %}
+      {% else %}
+        <p>No Details Are Available..</p>
+      {% endif %}
+
+    </div>
+
+    {% else %}
+
+    <div class="right">
+      <div class="alert alert-success" role="alert">
+        <b><center> EMPLOYEES LIST </center></b>
+      </div>
+      {% for employee in list_employees %}
+
+          <a href="/FoodItem/employee_details/{{employee}}"><button type="submit" class="btn btn-primary btn-lg btn-block">{{employee|upper}}</button></a><hr>
+      {% endfor %}
+
+    </div>
+
+    <div class="left">
+      <div class="alert alert-success" role="alert">
+        <b><center> STEPS LIST </center></b>
+      </div>
+      {% for step in list_steps %}
+          <a href="/FoodItem/step_details/{{step}}"><button type="submit" class="btn btn-primary btn-lg btn-block">{{step|title}}</button></a><hr>
+      {% endfor %}
+
+    </div>
+  {% endif %}
+
+  </div>
+{% endblock %}
